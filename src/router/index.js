@@ -10,6 +10,19 @@ const router = new VueRouter({
       name: "HomeView",
       component: () => import("@/views/HomeView.vue"),
     },
+    /**
+     * pages
+     */
+    {
+      path: "/login",
+      name: "LoginView",
+      component: () => import("@/views/pages/LoginView.vue"),
+    },
+    {
+      path: "/error",
+      name: "ErrorView",
+      component: () => import("@/views/pages/ErrorView.vue"),
+    },
   ],
 });
 
