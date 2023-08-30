@@ -23,6 +23,25 @@ const router = new VueRouter({
       name: "ErrorView",
       component: () => import("@/views/pages/ErrorView.vue"),
     },
+
+    /**
+     * components - tables
+     */
+    {
+      path: "/tables/basic",
+      name: "TableBasicView",
+      component: () => import("@/views/components/tables/TableBasicView.vue"),
+    },
+    {
+      path: "/tables/expand",
+      name: "TableExpandView",
+      component: () => import("@/views/components/tables/TableExpandView.vue"),
+    },
+    {
+      path: "/tables/select",
+      name: "TableSelectView",
+      component: () => import("@/views/components/tables/TableSelectView.vue"),
+    },
   ],
 });
 
