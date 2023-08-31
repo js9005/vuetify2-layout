@@ -1,7 +1,75 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app>
-      <!--  -->
+      <v-list-item style="height: 64px"> xxx </v-list-item>
+      <v-list>
+        <v-subheader> 페이지 </v-subheader>
+        <div v-for="item in menu" :key="item.title" class="mb-2">
+          <!-- 서브메뉴 있는 경우 -->
+          <template v-if="item.sub">
+            <v-list-group :prepend-icon="item.icon" no-action>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </template>
+              <v-list-item
+                v-for="child in item.sub"
+                :key="child.title"
+                :to="child.path"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>{{ child.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </template>
+          <!-- 서브메뉴 없는 경우 -->
+          <template v-else>
+            <v-list-item :to="item.path" color="primary">
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </div>
+        <v-subheader> 컴포넌트 </v-subheader>
+        <div v-for="item in menu" :key="item.title" class="mb-2">
+          <!-- 서브메뉴 있는 경우 -->
+          <template v-if="item.sub">
+            <v-list-group :prepend-icon="item.icon" no-action>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </template>
+              <v-list-item
+                v-for="child in item.sub"
+                :key="child.title"
+                :to="child.path"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>{{ child.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </template>
+          <!-- 서브메뉴 없는 경우 -->
+          <template v-else>
+            <v-list-item :to="item.path" color="primary">
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </div>
+      </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app>
@@ -50,6 +118,34 @@
 <script>
 export default {
   name: "App",
-  data: () => ({ drawer: null }),
+  data: () => ({
+    drawer: null,
+    menu: [
+      {
+        icon: "mdi-home",
+        title: "홈",
+        path: "/",
+      },
+      {
+        icon: "mdi-login",
+        title: "로그인",
+        path: "/login",
+      },
+      {
+        icon: "mdi-alert-circle-outline",
+        title: "에러",
+        path: "/error",
+      },
+      {
+        icon: "mdi-table",
+        title: "테이블",
+        sub: [
+          { title: "기본", path: "/tables/basic" },
+          { title: "연장", path: "/tables/expand" },
+          { title: "선택", path: "/tables/select" },
+        ],
+      },
+    ],
+  }),
 };
 </script>
