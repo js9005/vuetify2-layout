@@ -10,6 +10,7 @@ const router = new VueRouter({
       name: "HomeView",
       component: () => import("@/views/HomeView.vue"),
     },
+
     /**
      * pages
      */
@@ -41,6 +42,15 @@ const router = new VueRouter({
       path: "/tables/select",
       name: "TableSelectView",
       component: () => import("@/views/components/tables/TableSelectView.vue"),
+    },
+
+    /**
+     * components - maps
+     */
+    {
+      path: "/maps/basic",
+      name: "MapBasicView",
+      component: () => import("@/views/components/maps/MapBasicView.vue"),
     },
   ],
 });
