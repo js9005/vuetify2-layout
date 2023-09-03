@@ -145,6 +145,11 @@ export default {
           { title: "선택", path: "/tables/select" },
         ],
       },
+      {
+        icon: "mdi-map",
+        title: "지도",
+        sub: [{ title: "기본", path: "/maps/basic" }],
+      },
     ],
   }),
 };
